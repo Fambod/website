@@ -1307,7 +1307,7 @@ video {
   color: rgb(255 235 168 / var(--tw-text-opacity));
 }
 
-.text-fambad{
+.text-fambod{
   --tw-text-opacity: 1;
   color: rgb(255 205 41 / var(--tw-text-opacity));
 }
@@ -1774,7 +1774,7 @@ video {
     line-height: 35px;
   }
 
-  .xxs\:text-fambad{
+  .xxs\:text-fambod{
     --tw-text-opacity: 1;
     color: rgb(255 205 41 / var(--tw-text-opacity));
   }
