@@ -1,0 +1,235 @@
+<!--
+  FamBod — Friends & Family Alpha install page (v4)
+  Matches fambod.com: green hero, #FFCD29 yellow, #353849 night, Poppins/DM Sans/Urbanist.
+  >>> REPLACE BEFORE SENDING (search "REPLACE_ME"):
+      1. CONFIG.TESTFLIGHT_URL   2. CONFIG.ANDROID_METHOD ("apk"/"play")
+      3. CONFIG.ANDROID_APK_URL  4. CONFIG.ANDROID_PLAY_URL
+      5. CONFIG.FEEDBACK_URL     6. Footer social links
+-->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Download FamBod</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap');
+  :root{
+    --yellow:#FFCD29; --yellow-deep:#F2BD00; --yellow-soft:#FFEBA8;
+    --night:#353849; --night-soft:#6E7180;
+    --green-1:#6DD89D; --green-2:#57B48D; --green-ink:#2F7D60;
+    --mint:#ECFFF5; --cream:#F4F4F4; --white:#FFFFFF; --line:#E9E9EC;
+    --font-display:'Urbanist',sans-serif; --font-body:'Urbanist',sans-serif; --font-label:'Urbanist',sans-serif;
+    --radius:24px; --shadow-sm:0 2px 12px rgba(53,56,73,.07); --shadow-md:0 16px 40px rgba(53,56,73,.12); --shadow-yellow:0 12px 30px rgba(255,205,41,.45);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--font-body); font-weight:400; color:var(--night); background:#FBF8F2; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .wrap{ width:100%; max-width:1040px; margin:0 auto; padding:0 22px; }
+  h1,h2,h3,h4{ font-family:var(--font-display); }
+  header{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line); }
+  .hbar{ display:flex; align-items:center; height:66px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand img{ height:28px; width:auto; }
+  .brand .word{ font-family:var(--font-display); font-weight:800; font-size:1.35rem; color:var(--night); letter-spacing:-.02em; }
+  .hero{ position:relative; overflow:visible; color:var(--white); background:linear-gradient(302deg, var(--green-1) -7.5%, var(--green-2) 69.33%); border-bottom-left-radius:40px; border-bottom-right-radius:40px; padding:54px 0 96px; }
+  .hero::after{ content:""; position:absolute; inset:0; border-bottom-left-radius:40px; border-bottom-right-radius:40px; overflow:hidden; pointer-events:none; z-index:0; }
+  .hero::before{ content:""; position:absolute; inset:0; border-bottom-left-radius:40px; border-bottom-right-radius:40px; z-index:0; background:radial-gradient(70% 80% at 50% 110%, rgba(255,205,41,.55), rgba(255,205,41,0) 70%); pointer-events:none; }
+  .hero .inner{ position:relative; z-index:1; display:flex; align-items:center; gap:30px; }
+  .htext{ flex:1; min-width:0; }
+  .label{ font-family:var(--font-label); font-weight:700; font-size:.76rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.82); margin-bottom:14px; opacity:0; animation:rise .7s .05s forwards; }
+  .hero h1{ font-weight:800; font-size:clamp(2.2rem,5vw,3.3rem); line-height:1.05; letter-spacing:-.025em; margin-bottom:14px; opacity:0; animation:rise .7s .15s forwards; }
+  .hero p.lede{ font-size:1.08rem; font-weight:400; color:rgba(255,255,255,.92); max-width:440px; margin-bottom:26px; opacity:0; animation:rise .7s .25s forwards; }
+  .hphone{ flex:0 0 auto; width:780px; max-width:62%; opacity:0; animation:floatin .9s .2s forwards; }
+  .hphone img{ width:100%; height:auto; display:block; filter:drop-shadow(0 30px 40px rgba(20,60,45,.28)); }
+  .switch{ opacity:0; animation:rise .7s .35s forwards; }
+  .seg{ display:inline-flex; padding:6px; gap:6px; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); border-radius:16px; }
+  .seg button{ border:none; cursor:pointer; background:transparent; color:#fff; font-family:var(--font-display); font-weight:700; font-size:1.02rem; padding:13px 26px; border-radius:11px; display:inline-flex; align-items:center; gap:9px; transition:all .2s ease; }
+  .seg button svg{ width:19px; height:19px; }
+  .seg button.active{ background:var(--yellow); color:var(--night); box-shadow:var(--shadow-yellow); }
+  .safety{ position:relative; z-index:5; margin:-60px auto 0; max-width:760px; background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:24px 28px; box-shadow:var(--shadow-md); display:flex; gap:16px; align-items:flex-start; }
+  .safety .ic{ flex:0 0 auto; width:46px; height:46px; border-radius:14px; background:var(--yellow-soft); display:grid; place-items:center; font-size:1.45rem; }
+  .safety h3{ font-weight:700; font-size:1.15rem; margin-bottom:5px; }
+  .safety p{ color:var(--night-soft); font-size:.97rem; }
+  .safety strong{ color:var(--night); font-weight:600; }
+  .setup{ position:relative; padding:48px 0 20px; }
+  .steps-title{ text-align:center; font-weight:800; font-size:clamp(1.5rem,3.4vw,2rem); letter-spacing:-.02em; margin-bottom:6px; }
+  .lead{ text-align:center; color:var(--night-soft); max-width:600px; margin:0 auto 28px; }
+  .lead strong{ color:var(--night); }
+  .panel{ display:none; }
+  .panel.show{ display:block; animation:fade .35s ease; }
+  .panel.flash .step:first-of-type{ animation:flash 1.1s ease; }
+  .steps{ list-style:none; counter-reset:s; display:grid; gap:14px; max-width:760px; margin:0 auto; }
+  .step{ counter-increment:s; position:relative; background:var(--white); border:1px solid var(--line); border-radius:18px; padding:22px 24px 22px 72px; box-shadow:var(--shadow-sm); }
+  .step::before{ content:counter(s); position:absolute; left:20px; top:20px; width:36px; height:36px; border-radius:12px; background:var(--yellow); color:var(--night); font-family:var(--font-display); font-weight:800; font-size:1.05rem; display:grid; place-items:center; }
+  .step h4{ font-weight:700; font-size:1.07rem; margin-bottom:4px; }
+  .step p{ color:var(--night-soft); font-size:.96rem; }
+  .step.key{ border-color:var(--yellow); background:linear-gradient(180deg,#FFFBEC,#fff); }
+  .act{ display:inline-flex; align-items:center; gap:8px; margin-top:13px; font-family:var(--font-display); font-weight:700; font-size:.96rem; text-decoration:none; padding:11px 18px; border-radius:12px; background:var(--yellow); color:var(--night); transition:transform .16s ease, box-shadow .16s ease, background .16s ease; }
+  .act:hover{ transform:translateY(-2px); background:var(--yellow-deep); box-shadow:var(--shadow-yellow); }
+  .swap{ text-align:center; margin-top:24px; }
+  .swap a{ font-family:var(--font-display); font-weight:600; color:var(--green-ink); cursor:pointer; text-decoration:none; border-bottom:2px solid var(--mint); padding-bottom:1px; }
+  /* Good to know — set apart below the swap link so it never reads as a step */
+  .gtk-sep{ max-width:760px; margin:30px auto 0; border-top:1px solid var(--line); }
+  .gtk{ max-width:760px; margin:22px auto 0; background:#FBF8F2; border:1px dashed #CFCFD4; border-radius:16px; padding:18px 22px; }
+  .gtk b{ font-family:var(--font-display); font-weight:700; font-size:.95rem; display:block; margin-bottom:8px; color:var(--night-soft); text-transform:uppercase; letter-spacing:.06em; }
+  .gtk ul{ margin:0; padding-left:18px; color:var(--night-soft); font-size:.92rem; list-style:disc; }
+  .gtk li{ margin:5px 0; }
+  /* Feedback callout */
+  .feedback{ max-width:760px; margin:30px auto 0; background:linear-gradient(135deg,#ECFFF5,#FFFFFF 90%); border:1px solid #CDEFE0; border-radius:20px; padding:28px 30px; text-align:center; }
+  .feedback h3{ font-weight:800; font-size:1.22rem; margin-bottom:8px; }
+  .feedback p{ color:var(--night-soft); max-width:540px; margin:0 auto 16px; }
+  .feedback .fbtn{ display:inline-flex; align-items:center; gap:8px; font-family:var(--font-display); font-weight:700; font-size:.98rem; text-decoration:none; padding:13px 22px; border-radius:13px; background:var(--green-2); color:#fff; transition:transform .16s ease, box-shadow .16s ease, background .16s ease; }
+  .feedback .fbtn:hover{ transform:translateY(-2px); background:var(--green-ink); box-shadow:0 12px 26px rgba(47,125,96,.3); }
+  .support{ text-align:center; padding:42px 0 8px; color:var(--night-soft); font-size:.98rem; }
+  .support a{ color:var(--green-ink); font-weight:700; text-decoration:none; }
+  footer{ background:#1A4A35; color:#fff; margin-top:38px; padding:30px 0 42px; }
+  .fbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  .fnav{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; font-size:.9rem; }
+  .fnav a{ color:rgba(255,255,255,.78); text-decoration:none; } .fnav a:hover{ color:#fff; }
+  .fnav .sep{ color:rgba(255,255,255,.3); }
+  .fsocial{ display:flex; gap:12px; }
+  .fsocial a{ width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,.1); display:grid; place-items:center; transition:background .2s; }
+  .fsocial a:hover{ background:var(--yellow); }
+  .fsocial img{ width:16px; height:16px; filter:brightness(0) invert(1); }
+  .copy{ text-align:center; color:rgba(255,255,255,.6); font-size:.82rem; margin-top:18px; }
+  @keyframes rise{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
+  @keyframes floatin{ from{opacity:0; transform:translateY(26px) rotate(-1deg);} to{opacity:1; transform:none;} }
+  @keyframes fade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+  @keyframes flash{ 0%{box-shadow:0 0 0 0 rgba(255,205,41,.7);} 30%{box-shadow:0 0 0 6px rgba(255,205,41,.22);} 100%{box-shadow:var(--shadow-sm);} }
+  @media (max-width:760px){
+    .hero{ padding:40px 0 90px; }
+    .hero .inner{ flex-direction:column-reverse; text-align:center; gap:18px; }
+    .hphone{ width:480px; max-width:100%; }
+    .hero p.lede{ margin-left:auto; margin-right:auto; }
+    .step{ padding:20px 18px 20px 62px; } .step::before{ left:16px; }
+    .safety{ flex-direction:column; gap:12px; margin-top:-54px; }
+  }
+</style>
+
+<header><div class="wrap hbar">
+  <a class="brand" href="https://fambod.com/">
+    <img src="https://fambod.com/images/logo.png" alt="FamBod" onerror="this.style.display='none'">
+    <span class="word">FamBod</span>
+  </a>
+</div></header>
+
+<section class="hero"><div class="wrap inner">
+  <div class="htext">
+    <div class="label">Alpha Version</div>
+    <h1>Download FamBod</h1>
+    <p class="lede">An early build, just for our first families — free while you help us shape it. 🤍</p>
+    <div class="switch"><div class="seg" role="tablist">
+      <button id="tab-ios" onclick="choose('ios', true)"><svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>iPhone</button>
+      <button id="tab-android" onclick="choose('android', true)"><svg viewBox="0 0 576 512" fill="currentColor"><path d="M420.6 301.9a24 24 0 1 1 24-24 24 24 0 0 1-24 24m-265.1 0a24 24 0 1 1 24-24 24 24 0 0 1-24 24m273.7-144.5 47.9-83a10 10 0 1 0-17.3-10l-48.5 84.1a301.3 301.3 0 0 0-246.6 0L116.2 64.4a10 10 0 1 0-17.3 10l47.9 83C64.5 202.2 8.2 285.6 0 384h576c-8.2-98.4-64.5-181.8-146.8-226.6"/></svg>Android</button>
+    </div></div>
+  </div>
+  <div class="hphone"><img src="images/FamApp_MockUp.png" alt="FamBod app preview"></div></div></section>
+
+<div class="wrap"><section class="safety">
+  <div class="ic"><img src="images/JustBaby V2.png" alt="" style="width:30px;height:30px;object-fit:contain;"></div>
+  <div>
+    <h3>Before you start</h3>
+    <p>FamBod is built for babies roughly <strong>6–18 months</strong> who can comfortably hold their head up and sit on their own. Keep your little one comfy, move at your own pace, and pause or stop anytime — their safety always comes first. 🤍</p>
+  </div>
+</section></div>
+
+<section class="setup" id="setup"><div class="wrap">
+  <h2 class="steps-title" id="steps-title">Setting up on iPhone</h2>
+  <div class="panel" id="panel-ios"></div>
+  <div class="panel" id="panel-android"></div>
+  <div class="swap"><a id="swap-link" onclick="toggleOther()"></a></div>
+  <div class="gtk-sep"></div>
+  <div id="gtk"></div>
+</div></section>
+
+<section class="support"><div class="wrap">Stuck on anything? We're real people and happy to help — email <a href="mailto:support@fambod.com">support@fambod.com</a> and we'll get you moving.</div></section>
+
+<footer><div class="wrap">
+  <div class="fbar">
+    <nav class="fnav">
+      <a href="https://fambod.com/privacy-data-policy.html">Privacy &amp; Data Policy</a>
+      <span class="sep">|</span>
+      <a href="https://fambod.com/terms-of-use.html">Terms of Use</a>
+    </nav>
+    <div class="fsocial">
+      <a href="#" aria-label="Facebook"><img src="https://fambod.com/images/faceblack.svg" alt="Facebook" onerror="this.parentNode.style.display='none'"></a>
+      <a href="#" aria-label="Instagram"><img src="https://fambod.com/images/instablack.svg" alt="Instagram" onerror="this.parentNode.style.display='none'"></a>
+    </div>
+  </div>
+  <p class="copy">© FamBod 2026 · Made with 🤍 for tired, strong parents.</p>
+</div></footer>
+
+<script>
+  /* ===== CONFIG — replace REPLACE_ME values before sending ===== */
+  const CONFIG = {
+    TESTFLIGHT_URL : "https://testflight.apple.com/join/REPLACE_ME",
+    ANDROID_METHOD : "apk",                 // "apk" or "play"
+    ANDROID_APK_URL  : "https://fambod.com/downloads/fambod-latest.apk",      // REPLACE_ME (apk)
+    ANDROID_PLAY_URL : "https://play.google.com/apps/testing/com.fambod.app", // REPLACE_ME (play)
+    FEEDBACK_URL     : "REPLACE_ME"          // your feedback form link
+  };
+  const TF_APPSTORE = "https://apps.apple.com/app/testflight/id899247664"; // Apple's TestFlight app (stable)
+
+  const PANELS = {
+    ios: `
+      <p class="lead">FamBod isn't on the App Store yet, so you'll install it through <strong>TestFlight</strong> — Apple's free, official app for trying apps before they launch. Two quick taps and you're in.</p>
+      <ol class="steps">
+        <li class="step"><h4>Get the free TestFlight app</h4><p>It's made by Apple. Install it like any normal app, then come back to this page.</p><a class="act" href="${TF_APPSTORE}" target="_blank" rel="noopener">📲 Get TestFlight</a></li>
+        <li class="step key"><h4>Open your FamBod invite</h4><p>This opens FamBod inside TestFlight. If it asks &ldquo;Open in TestFlight?&rdquo;, tap <strong>Open</strong>.</p><a class="act" href="${CONFIG.TESTFLIGHT_URL}" target="_blank" rel="noopener">Open FamBod invite →</a></li>
+        <li class="step"><h4>Tap &ldquo;Install&rdquo; in TestFlight</h4><p>FamBod downloads to your home screen, just like a normal app.</p></li>
+        <li class="step"><h4>Open FamBod and create your account</h4><p>That's it — sign up and start moving together. 🤍</p></li>
+      </ol>`,
+    android_apk: `
+      <p class="lead">FamBod isn't on the Play Store yet, so you'll install it from a download link. Takes about a minute.</p>
+      <ol class="steps">
+        <li class="step"><h4>Download FamBod</h4><p>The app file saves to your Downloads and shows up in your notifications.</p><a class="act" href="${CONFIG.ANDROID_APK_URL}" download>⬇ Download FamBod</a></li>
+        <li class="step key"><h4>Open the downloaded file</h4><p>Tap it to open. If Android warns about an &ldquo;unknown source,&rdquo; tap <strong>Settings → Allow from this source</strong>, then go back. This is normal for test apps.</p></li>
+        <li class="step"><h4>Tap &ldquo;Install&rdquo;</h4><p>If a Google Play Protect notice appears, choose <strong>Install anyway</strong> — expected for an app that isn't on the Play Store yet.</p></li>
+        <li class="step"><h4>Open FamBod and create your account</h4><p>Find it in your app drawer, sign up, and start moving together. 🤍</p></li>
+      </ol>`,
+    android_play: `
+      <p class="lead">You'll join through Google Play, so FamBod installs and updates just like a normal app.</p>
+      <ol class="steps">
+        <li class="step"><h4>Join the FamBod test</h4><p>On the page that opens, tap <strong>Become a tester</strong> (or Accept).</p><a class="act" href="${CONFIG.ANDROID_PLAY_URL}" target="_blank" rel="noopener">Join the test →</a></li>
+        <li class="step"><h4>Install from Google Play</h4><p>Tap the &ldquo;Download it on Google Play&rdquo; link on that page, then tap <strong>Install</strong> like any app.</p></li>
+        <li class="step"><h4>Open FamBod and create your account</h4><p>Sign up and start moving together. 🤍</p></li>
+      </ol>`
+  };
+  const GTK = {
+    ios: `<div class="gtk"><b>Good to know</b><ul>
+      <li>Don't search the App Store for &ldquo;FamBod&rdquo; — it isn't there yet. It only comes through the invite above.</li>
+      <li>Updates arrive inside the <strong>TestFlight</strong> app (tap Update if asked), not the App Store.</li>
+      <li>Test builds expire after about 90 days — we'll send a fresh invite if that happens.</li></ul></div>`,
+    android_apk: `<div class="gtk"><b>Good to know</b><ul>
+      <li>Don't search the Play Store for &ldquo;FamBod&rdquo; — it isn't there yet. It only comes through the link above.</li>
+      <li>We'll send a new download link whenever there's an update.</li></ul></div>`,
+    android_play: `<div class="gtk"><b>Good to know</b><ul>
+      <li>Because it's through Google Play, updates arrive automatically — nothing extra to do.</li>
+      <li>If it says you're not a tester yet, wait a few minutes and tap the link again.</li></ul></div>`
+  };
+
+  const androidKey = CONFIG.ANDROID_METHOD === 'play' ? 'android_play' : 'android_apk';
+  document.getElementById('panel-ios').innerHTML = PANELS.ios;
+  document.getElementById('panel-android').innerHTML = PANELS[androidKey];
+
+  let current = 'ios';
+  function choose(os, scroll){
+    current = os;
+    const other = os === 'ios' ? 'android' : 'ios';
+    document.getElementById('tab-ios').classList.toggle('active', os==='ios');
+    document.getElementById('tab-android').classList.toggle('active', os==='android');
+    const showP = document.getElementById('panel-'+os);
+    document.getElementById('panel-'+other).classList.remove('show');
+    showP.classList.add('show');
+    document.getElementById('steps-title').textContent = os==='ios' ? 'Setting up on iPhone' : 'Setting up on Android';
+    document.getElementById('gtk').innerHTML = os==='ios' ? GTK.ios : GTK[androidKey];
+    document.getElementById('swap-link').textContent = os==='ios'
+      ? 'Using an Android phone instead? Tap here →' : 'Using an iPhone instead? Tap here →';
+    if(scroll){
+      const top = document.getElementById('setup').getBoundingClientRect().top + window.scrollY - 14;
+      window.scrollTo({ top, behavior:'smooth' });
+      showP.classList.remove('flash'); void showP.offsetWidth; showP.classList.add('flash');
+    }
+  }
+  function toggleOther(){ choose(current==='ios' ? 'android' : 'ios', true); }
+  const ua = navigator.userAgent || '';
+  choose(/android/i.test(ua) ? 'android' : 'ios', false);
+</script>
