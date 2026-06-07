@@ -24,12 +24,12 @@
   body{ font-family:var(--font-body); font-weight:400; color:var(--night); background:#FBF8F2; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
   .wrap{ width:100%; max-width:1040px; margin:0 auto; padding:0 22px; }
   h1,h2,h3,h4{ font-family:var(--font-display); }
-  header{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line); }
+  header{ position:absolute; top:0; left:0; right:0; z-index:50; background:transparent; }
   .hbar{ display:flex; align-items:center; height:66px; }
-  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .brand img{ height:28px; width:auto; }
-  .brand .word{ font-family:var(--font-display); font-weight:800; font-size:1.35rem; color:var(--night); letter-spacing:-.02em; }
-  .hero{ position:relative; overflow:visible; color:var(--white); background:linear-gradient(302deg, var(--green-1) -7.5%, var(--green-2) 69.33%); border-bottom-left-radius:40px; border-bottom-right-radius:40px; padding:54px 0 96px; }
+  .brand{ display:inline-flex; align-items:center; text-decoration:none; background:#fff; padding:8px 12px; border-radius:14px; box-shadow:0 2px 12px rgba(53,56,73,.12); }
+  .brand img{ height:36px; width:auto; display:block; }
+  .brand .word{ font-family:var(--font-display); font-weight:800; font-size:1.35rem; color:#fff; letter-spacing:-.02em; }
+  .hero{ position:relative; overflow:visible; color:var(--white); background:linear-gradient(302deg, var(--green-1) -7.5%, var(--green-2) 69.33%); border-bottom-left-radius:40px; border-bottom-right-radius:40px; padding:90px 0 96px; }
   .hero::after{ content:""; position:absolute; inset:0; border-bottom-left-radius:40px; border-bottom-right-radius:40px; overflow:hidden; pointer-events:none; z-index:0; }
   .hero::before{ content:""; position:absolute; inset:0; border-bottom-left-radius:40px; border-bottom-right-radius:40px; z-index:0; background:radial-gradient(70% 80% at 50% 110%, rgba(255,205,41,.55), rgba(255,205,41,0) 70%); pointer-events:none; }
   .hero .inner{ position:relative; z-index:1; display:flex; align-items:center; gap:30px; }
@@ -95,7 +95,7 @@
   @keyframes fade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
   @keyframes flash{ 0%{box-shadow:0 0 0 0 rgba(255,205,41,.7);} 30%{box-shadow:0 0 0 6px rgba(255,205,41,.22);} 100%{box-shadow:var(--shadow-sm);} }
   @media (max-width:760px){
-    .hero{ padding:40px 0 90px; }
+    .hero{ padding:74px 0 90px; }
     .hero .inner{ flex-direction:column-reverse; text-align:center; gap:18px; }
     .hphone{ width:480px; max-width:100%; }
     .hero p.lede{ margin-left:auto; margin-right:auto; }
@@ -105,9 +105,8 @@
 </style>
 
 <header><div class="wrap hbar">
-  <a class="brand" href="https://fambod.com/">
-    <img src="https://fambod.com/images/logo.png" alt="FamBod" onerror="this.style.display='none'">
-    <span class="word">FamBod</span>
+  <a class="brand" href="https://fambod.com/" aria-label="FamBod home">
+    <img src="images/logo-app.png" alt="FamBod">
   </a>
 </div></header>
 
@@ -127,7 +126,7 @@
   <div class="ic"><img src="images/JustBaby V2.png" alt="" style="width:30px;height:30px;object-fit:contain;"></div>
   <div>
     <h3>Before you start</h3>
-    <p>FamBod is built for babies roughly <strong>6–18 months</strong> who can comfortably hold their head up and sit on their own. Keep your little one comfy, move at your own pace, and pause or stop anytime — their safety always comes first. 🤍</p>
+    <p>FamBod is built for parents of babies roughly <strong>6–18 months</strong> who can comfortably hold their head up and sit on their own. Keep your little one comfy, move at your own pace, and pause or stop anytime — their safety always comes first. 🤍</p>
   </div>
 </section></div>
 
