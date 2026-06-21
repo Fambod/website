@@ -139,6 +139,12 @@
   <div id="gtk"></div>
 </div></section>
 
+<div class="wrap"><section class="feedback">
+  <h3>Tell us what you think 🤍</h3>
+  <p>You're one of our first families, so your feedback shapes FamBod directly. Got a minute? We'd love to hear how it's going.</p>
+  <a id="feedback-link" class="fbtn" target="_blank" rel="noopener">Share your feedback →</a>
+</section></div>
+
 <section class="support"><div class="wrap">Stuck on anything? We're real people and happy to help — email <a href="mailto:support@fambod.com">support@fambod.com</a> and we'll get you moving.</div></section>
 
 <footer><div class="wrap">
@@ -159,11 +165,11 @@
 <script>
   /* ===== CONFIG — replace REPLACE_ME values before sending ===== */
   const CONFIG = {
-    TESTFLIGHT_URL : "https://testflight.apple.com/join/REPLACE_ME",
+    TESTFLIGHT_URL : "https://testflight.apple.com/join/VW1thhe9",
     ANDROID_METHOD : "apk",                 // "apk" or "play"
-    ANDROID_APK_URL  : "https://fambod.com/downloads/fambod-latest.apk",      // REPLACE_ME (apk)
+    ANDROID_APK_URL  : "https://expo.dev/accounts/fambod/projects/FamBod/builds/10ff3a88-50e2-469f-8c21-017005247055", // Expo build page
     ANDROID_PLAY_URL : "https://play.google.com/apps/testing/com.fambod.app", // REPLACE_ME (play)
-    FEEDBACK_URL     : "REPLACE_ME"          // your feedback form link
+    FEEDBACK_URL     : "https://docs.google.com/forms/d/e/1FAIpQLSeZOLO_v0MFoSJ8Se6-DFFRHIALYMlqoYYNNQ5XvboBPjAFPw/viewform" // feedback form
   };
   const TF_APPSTORE = "https://apps.apple.com/app/testflight/id899247664"; // Apple's TestFlight app (stable)
 
@@ -179,7 +185,7 @@
     android_apk: `
       <p class="lead">FamBod isn't on the Play Store yet, so you'll install it from a download link. Takes about a minute.</p>
       <ol class="steps">
-        <li class="step"><h4>Download FamBod</h4><p>The app file saves to your Downloads and shows up in your notifications.</p><a class="act" href="${CONFIG.ANDROID_APK_URL}" download>⬇ Download FamBod</a></li>
+        <li class="step"><h4>Open the download page</h4><p>This opens the FamBod build page. Tap <strong>Install</strong> (or Download) there to save the app file to your Downloads.</p><a class="act" href="${CONFIG.ANDROID_APK_URL}" target="_blank" rel="noopener">⬇ Get FamBod →</a></li>
         <li class="step key"><h4>Open the downloaded file</h4><p>Tap it to open. If Android warns about an &ldquo;unknown source,&rdquo; tap <strong>Settings → Allow from this source</strong>, then go back. This is normal for test apps.</p></li>
         <li class="step"><h4>Tap &ldquo;Install&rdquo;</h4><p>If a Google Play Protect notice appears, choose <strong>Install anyway</strong> — expected for an app that isn't on the Play Store yet.</p></li>
         <li class="step"><h4>Open FamBod and create your account</h4><p>Find it in your app drawer, sign up, and start moving together. 🤍</p></li>
@@ -208,6 +214,7 @@
   const androidKey = CONFIG.ANDROID_METHOD === 'play' ? 'android_play' : 'android_apk';
   document.getElementById('panel-ios').innerHTML = PANELS.ios;
   document.getElementById('panel-android').innerHTML = PANELS[androidKey];
+  document.getElementById('feedback-link').href = CONFIG.FEEDBACK_URL;
 
   let current = 'ios';
   function choose(os, scroll){
