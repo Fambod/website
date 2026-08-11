@@ -104,63 +104,92 @@
   }
 </style>
 
-<header><div class="wrap hbar">
-  <a class="brand" href="https://fambod.com/" aria-label="FamBod home">
-    <img src="images/FamBod_White.png" alt="FamBod">
-  </a>
-</div></header>
-
-<section class="hero"><div class="wrap inner">
-  <div class="htext">
-    <div class="label">Alpha Version</div>
-    <h1>Download FamBod</h1>
-    <p class="lede">An early build, just for our first families — free while you help us shape it. 🤍</p>
-    <div class="switch"><div class="seg" role="tablist">
-      <button id="tab-ios" onclick="choose('ios', true)"><svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>iPhone</button>
-      <button id="tab-android" onclick="choose('android', true)"><svg viewBox="0 0 576 512" fill="currentColor"><path d="M420.6 301.9a24 24 0 1 1 24-24 24 24 0 0 1-24 24m-265.1 0a24 24 0 1 1 24-24 24 24 0 0 1-24 24m273.7-144.5 47.9-83a10 10 0 1 0-17.3-10l-48.5 84.1a301.3 301.3 0 0 0-246.6 0L116.2 64.4a10 10 0 1 0-17.3 10l47.9 83C64.5 202.2 8.2 285.6 0 384h576c-8.2-98.4-64.5-181.8-146.8-226.6"/></svg>Android</button>
-    </div></div>
+<header>
+  <div class="wrap hbar">
+    <a class="brand" href="https://fambod.com/" aria-label="FamBod home">
+      <img src="images/FamBod_White.png" alt="FamBod">
+    </a>
   </div>
-  <div class="hphone"><img src="images/FamApp_MockUp.png" alt="FamBod app preview"></div></div></section>
+</header>
 
-<div class="wrap"><section class="safety">
-  <div class="ic"><img src="images/JustBaby V2.png" alt="" style="width:30px;height:30px;object-fit:contain;"></div>
-  <div>
-    <h3>Before you start</h3>
-    <p>FamBod is built for parents of babies roughly <strong>6–18 months</strong> who can comfortably hold their head up and sit on their own. Keep your little one comfy, move at your own pace, and pause or stop anytime — their safety always comes first. 🤍</p>
-  </div>
-</section></div>
-
-<section class="setup" id="setup"><div class="wrap">
-  <h2 class="steps-title" id="steps-title">Setting up on iPhone</h2>
-  <div class="panel" id="panel-ios"></div>
-  <div class="panel" id="panel-android"></div>
-  <div class="swap"><a id="swap-link" onclick="toggleOther()"></a></div>
-  <div class="gtk-sep"></div>
-  <div id="gtk"></div>
-</div></section>
-
-<div class="wrap"><section class="feedback">
-  <h3>Tell us what you think 🤍</h3>
-  <p>You're one of our first families, so your feedback shapes FamBod directly. Got a minute? We'd love to hear how it's going.</p>
-  <a id="feedback-link" class="fbtn" target="_blank" rel="noopener">Share your feedback →</a>
-</section></div>
-
-<section class="support"><div class="wrap">Stuck on anything? We're real people and happy to help — email <a href="mailto:support@fambod.com">support@fambod.com</a> and we'll get you moving.</div></section>
-
-<footer><div class="wrap">
-  <div class="fbar">
-    <nav class="fnav">
-      <a href="https://fambod.com/privacy-data-policy.html">Privacy &amp; Data Policy</a>
-      <span class="sep">|</span>
-      <a href="https://fambod.com/terms-of-use.html">Terms of Use</a>
-    </nav>
-    <div class="fsocial">
-      <a href="#" aria-label="Facebook"><img src="https://fambod.com/images/faceblack.svg" alt="Facebook" onerror="this.parentNode.style.display='none'"></a>
-      <a href="#" aria-label="Instagram"><img src="https://fambod.com/images/instablack.svg" alt="Instagram" onerror="this.parentNode.style.display='none'"></a>
+<section class="hero">
+  <div class="wrap inner">
+    <div class="htext">
+      <div class="label">Alpha Version</div>
+      <h1>Download FamBod</h1>
+      <p class="lede">An early build, just for our first families — free while you help us shape it. 🤍</p>
+      <div class="switch">
+        <div class="seg" role="tablist">
+          <button id="tab-ios" onclick="choose('ios', true)"><svg viewBox="0 0 384 512" fill="currentColor">
+              <path
+                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+            </svg>iPhone</button>
+          <button id="tab-android" onclick="choose('android', true)"><svg viewBox="0 0 576 512" fill="currentColor">
+              <path
+                d="M420.6 301.9a24 24 0 1 1 24-24 24 24 0 0 1-24 24m-265.1 0a24 24 0 1 1 24-24 24 24 0 0 1-24 24m273.7-144.5 47.9-83a10 10 0 1 0-17.3-10l-48.5 84.1a301.3 301.3 0 0 0-246.6 0L116.2 64.4a10 10 0 1 0-17.3 10l47.9 83C64.5 202.2 8.2 285.6 0 384h576c-8.2-98.4-64.5-181.8-146.8-226.6" />
+            </svg>Android</button>
+        </div>
+      </div>
     </div>
+    <div class="hphone"><img src="images/FamApp_MockUp.png" alt="FamBod app preview"></div>
   </div>
-  <p class="copy">© FamBod 2026 · Made with 🤍 for tired, strong parents.</p>
-</div></footer>
+</section>
+
+<div class="wrap">
+  <section class="safety">
+    <div class="ic"><img src="images/JustBaby V2.png" alt="" style="width:30px;height:30px;object-fit:contain;"></div>
+    <div>
+      <h3>Before you start</h3>
+      <p>FamBod is built for parents of babies roughly <strong>6–18 months</strong> who can comfortably hold their head
+        up and sit on their own. Keep your little one comfy, move at your own pace, and pause or stop anytime — their
+        safety always comes first. 🤍</p>
+    </div>
+  </section>
+</div>
+
+<section class="setup" id="setup">
+  <div class="wrap">
+    <h2 class="steps-title" id="steps-title">Setting up on iPhone</h2>
+    <div class="panel" id="panel-ios"></div>
+    <div class="panel" id="panel-android"></div>
+    <div class="swap"><a id="swap-link" onclick="toggleOther()"></a></div>
+    <div class="gtk-sep"></div>
+    <div id="gtk"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="feedback">
+    <h3>Tell us what you think 🤍</h3>
+    <p>You're one of our first families, so your feedback shapes FamBod directly. Got a minute? We'd love to hear how
+      it's going.</p>
+    <a id="feedback-link" class="fbtn" target="_blank" rel="noopener">Share your feedback →</a>
+  </section>
+</div>
+
+<section class="support">
+  <div class="wrap">Stuck on anything? We're real people and happy to help — email <a
+      href="mailto:support@fambod.com">support@fambod.com</a> and we'll get you moving.</div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbar">
+      <nav class="fnav">
+        <a href="https://fambod.com/privacy-data-policy.html">Privacy &amp; Data Policy</a>
+        <span class="sep">|</span>
+        <a href="https://fambod.com/terms-of-use.html">Terms of Use</a>
+      </nav>
+      <div class="fsocial">
+        <a href="#" aria-label="Facebook"><img src="https://fambod.com/images/faceblack.svg" alt="Facebook"
+            onerror="this.parentNode.style.display='none'"></a>
+        <a href="#" aria-label="Instagram"><img src="https://fambod.com/images/instablack.svg" alt="Instagram"
+            onerror="this.parentNode.style.display='none'"></a>
+      </div>
+    </div>
+    <p class="copy">© FamBod 2026 · Made with 🤍 for tired, strong parents.</p>
+  </div>
+</footer>
 
 <script>
   /* ===== CONFIG — replace REPLACE_ME values before sending ===== */
@@ -177,10 +206,10 @@
     ios: `
       <p class="lead">FamBod isn't on the App Store yet, so you'll install it through <strong>TestFlight</strong> — Apple's free, official app for trying apps before they launch. Two quick taps and you're in.</p>
       <ol class="steps">
-        <li class="step"><h4>Get the free TestFlight app</h4><p>It's made by Apple. Install it like any normal app, then come back to this page.</p><a class="act" href="${TF_APPSTORE}" target="_blank" rel="noopener">📲 Get TestFlight</a></li>
-        <li class="step key"><h4>Open your FamBod invite</h4><p>This opens FamBod inside TestFlight. If it asks &ldquo;Open in TestFlight?&rdquo;, tap <strong>Open</strong>.</p><a class="act" href="${CONFIG.TESTFLIGHT_URL}" target="_blank" rel="noopener">Open FamBod invite →</a></li>
-        <li class="step"><h4>Tap &ldquo;Install&rdquo; in TestFlight</h4><p>FamBod downloads to your home screen, just like a normal app.</p></li>
-        <li class="step"><h4>Open FamBod and create your account</h4><p>That's it — sign up and start moving together. 🤍</p></li>
+        <li class="step key"><h4>Get the free TestFlight app</h4><p>It's made by Apple. Install it from the App Store, then come back to this page. <strong>If TestFlight opens and asks for an invitation code — ignore it. You don't need one.</strong></p><a class="act" href="${TF_APPSTORE}" target="_blank" rel="noopener">📲 Get TestFlight</a></li>
+        <li class="step"><h4>Come back here and open FamBod</h4><p>Once TestFlight is installed, return to this page and tap the button below.</p><a class="act" href="${CONFIG.TESTFLIGHT_URL}" target="_blank" rel="noopener">Open FamBod in TestFlight →</a></li>
+        <li class="step"><h4>Tap &ldquo;Install&rdquo; in TestFlight</h4><p>TestFlight opens with FamBod ready to install. Tap <strong>Install</strong> and it downloads to your home screen, just like a normal app.</p></li>
+        <li class="step"><h4>Open FamBod</h4><p>That's it — open FamBod, create your account, and start moving together. 🤍</p></li>
       </ol>`,
     android_apk: `
       <p class="lead">FamBod isn't on the Play Store yet, so you'll install it from a download link. Takes about a minute.</p>
@@ -200,7 +229,8 @@
   };
   const GTK = {
     ios: `<div class="gtk"><b>Good to know</b><ul>
-      <li>Don't search the App Store for &ldquo;FamBod&rdquo; — it isn't there yet. It only comes through the invite above.</li>
+      <li>TestFlight may ask for an invitation code — you don't need one. Just use the button above.</li>
+      <li>Don't search the App Store for &ldquo;FamBod&rdquo; — it isn't there yet. It only comes through the link above.</li>
       <li>Updates arrive inside the <strong>TestFlight</strong> app (tap Update if asked), not the App Store.</li>
       <li>Test builds expire after about 90 days — we'll send a fresh invite if that happens.</li></ul></div>`,
     android_apk: `<div class="gtk"><b>Good to know</b><ul>
@@ -217,25 +247,25 @@
   document.getElementById('feedback-link').href = CONFIG.FEEDBACK_URL;
 
   let current = 'ios';
-  function choose(os, scroll){
+  function choose(os, scroll) {
     current = os;
     const other = os === 'ios' ? 'android' : 'ios';
-    document.getElementById('tab-ios').classList.toggle('active', os==='ios');
-    document.getElementById('tab-android').classList.toggle('active', os==='android');
-    const showP = document.getElementById('panel-'+os);
-    document.getElementById('panel-'+other).classList.remove('show');
+    document.getElementById('tab-ios').classList.toggle('active', os === 'ios');
+    document.getElementById('tab-android').classList.toggle('active', os === 'android');
+    const showP = document.getElementById('panel-' + os);
+    document.getElementById('panel-' + other).classList.remove('show');
     showP.classList.add('show');
-    document.getElementById('steps-title').textContent = os==='ios' ? 'Setting up on iPhone' : 'Setting up on Android';
-    document.getElementById('gtk').innerHTML = os==='ios' ? GTK.ios : GTK[androidKey];
-    document.getElementById('swap-link').textContent = os==='ios'
+    document.getElementById('steps-title').textContent = os === 'ios' ? 'Setting up on iPhone' : 'Setting up on Android';
+    document.getElementById('gtk').innerHTML = os === 'ios' ? GTK.ios : GTK[androidKey];
+    document.getElementById('swap-link').textContent = os === 'ios'
       ? 'Using an Android phone instead? Tap here →' : 'Using an iPhone instead? Tap here →';
-    if(scroll){
+    if (scroll) {
       const top = document.getElementById('setup').getBoundingClientRect().top + window.scrollY - 14;
-      window.scrollTo({ top, behavior:'smooth' });
+      window.scrollTo({ top, behavior: 'smooth' });
       showP.classList.remove('flash'); void showP.offsetWidth; showP.classList.add('flash');
     }
   }
-  function toggleOther(){ choose(current==='ios' ? 'android' : 'ios', true); }
+  function toggleOther() { choose(current === 'ios' ? 'android' : 'ios', true); }
   const ua = navigator.userAgent || '';
   choose(/android/i.test(ua) ? 'android' : 'ios', false);
 </script>
