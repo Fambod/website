@@ -84,3 +84,15 @@
     right: 0%;
   }
 }
+
+/* Legal-page tables: fit phone screens instead of scrolling sideways */
+@media (max-width: 767px) {
+  .policy-table th,
+  .policy-table td {
+    padding: 8px 10px !important;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+}
