@@ -1,10 +1,12 @@
 {
-  "name": "fambad",
+  "name": "fambod-website",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "tailwindcss -i src/style.css -o public/css/style.css --minify",
+    "watch:css": "tailwindcss -i src/style.css -o public/css/style.css --watch",
+    "serve": "python3 -m http.server 4173 --directory public"
   },
   "keywords": [],
   "author": "",
