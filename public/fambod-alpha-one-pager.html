@@ -202,20 +202,22 @@
     FEEDBACK_URL: "https://docs.google.com/forms/d/e/1FAIpQLSeZOLO_v0MFoSJ8Se6-DFFRHIALYMlqoYYNNQ5XvboBPjAFPw/viewform" // feedback form
   };
   const TF_APPSTORE = "https://apps.apple.com/app/testflight/id899247664"; // Apple's TestFlight app (stable)
+  // Campaign tags for the outbound store/APK links below.
+  const utm = url => url + (url.includes('?') ? '&' : '?') + 'utm_source=fambod.com&utm_medium=alpha_one_pager&utm_campaign=1.2.0-launch';
 
   const PANELS = {
     ios: `
       <p class="lead">FamBod isn't on the App Store yet, so you'll install it through <strong>TestFlight</strong> — Apple's free, official app for trying apps before they launch. Two quick taps and you're in.</p>
       <ol class="steps">
-        <li class="step key"><h4>Get the free TestFlight app</h4><p>It's made by Apple. Install it from the App Store, then come back to this page. <strong>If TestFlight opens and asks for an invitation code — ignore it. You don't need one.</strong></p><a class="act" href="${TF_APPSTORE}" target="_blank" rel="noopener">📲 Get TestFlight</a></li>
-        <li class="step"><h4>Come back here and open FamBod</h4><p>Once TestFlight is installed, return to this page and tap the button below.</p><a class="act" href="${CONFIG.TESTFLIGHT_URL}" target="_blank" rel="noopener">Open FamBod in TestFlight →</a></li>
+        <li class="step key"><h4>Get the free TestFlight app</h4><p>It's made by Apple. Install it from the App Store, then come back to this page. <strong>If TestFlight opens and asks for an invitation code — ignore it. You don't need one.</strong></p><a class="act" href="${utm(TF_APPSTORE)}" data-store-target="testflight_app" target="_blank" rel="noopener">📲 Get TestFlight</a></li>
+        <li class="step"><h4>Come back here and open FamBod</h4><p>Once TestFlight is installed, return to this page and tap the button below.</p><a class="act" href="${utm(CONFIG.TESTFLIGHT_URL)}" data-store-target="testflight_join" target="_blank" rel="noopener">Open FamBod in TestFlight →</a></li>
         <li class="step"><h4>Tap &ldquo;Install&rdquo; in TestFlight</h4><p>TestFlight opens with FamBod ready to install. Tap <strong>Install</strong> and it downloads to your home screen, just like a normal app.</p></li>
         <li class="step"><h4>Open FamBod</h4><p>That's it — open FamBod, create your account, and start moving together. 🤍</p></li>
       </ol>`,
     android_apk: `
       <p class="lead">FamBod isn't on the Play Store yet, so you'll install it from a download link. Takes about a minute.</p>
       <ol class="steps">
-        <li class="step"><h4>Open the download page</h4><p>This opens the FamBod build page. Tap <strong>Install</strong> (or Download) there to save the app file to your Downloads.</p><a class="act" href="${CONFIG.ANDROID_APK_URL}" target="_blank" rel="noopener">⬇ Get FamBod →</a></li>
+        <li class="step"><h4>Open the download page</h4><p>This opens the FamBod build page. Tap <strong>Install</strong> (or Download) there to save the app file to your Downloads.</p><a class="act" href="${utm(CONFIG.ANDROID_APK_URL)}" data-store-target="apk" target="_blank" rel="noopener">⬇ Get FamBod →</a></li>
         <li class="step key"><h4>Open the downloaded file</h4><p>Tap it to open. If Android warns about an &ldquo;unknown source,&rdquo; tap <strong>Settings → Allow from this source</strong>, then go back. This is normal for test apps.</p></li>
         <li class="step"><h4>Tap &ldquo;Install&rdquo;</h4><p>If a Google Play Protect notice appears, choose <strong>Install anyway</strong> — expected for an app that isn't on the Play Store yet.</p></li>
         <li class="step"><h4>Open FamBod and create your account</h4><p>Find it in your app drawer, sign up, and start moving together. 🤍</p></li>
@@ -223,7 +225,7 @@
     android_play: `
       <p class="lead">You'll join through Google Play, so FamBod installs and updates just like a normal app.</p>
       <ol class="steps">
-        <li class="step"><h4>Join the FamBod test</h4><p>On the page that opens, tap <strong>Become a tester</strong> (or Accept).</p><a class="act" href="${CONFIG.ANDROID_PLAY_URL}" target="_blank" rel="noopener">Join the test →</a></li>
+        <li class="step"><h4>Join the FamBod test</h4><p>On the page that opens, tap <strong>Become a tester</strong> (or Accept).</p><a class="act" href="${utm(CONFIG.ANDROID_PLAY_URL)}" data-store-target="google_play" target="_blank" rel="noopener">Join the test →</a></li>
         <li class="step"><h4>Install from Google Play</h4><p>Tap the &ldquo;Download it on Google Play&rdquo; link on that page, then tap <strong>Install</strong> like any app.</p></li>
         <li class="step"><h4>Open FamBod and create your account</h4><p>Sign up and start moving together. 🤍</p></li>
       </ol>`
@@ -269,4 +271,14 @@
   function toggleOther() { choose(current === 'ios' ? 'android' : 'ios', true); }
   const ua = navigator.userAgent || '';
   choose(/android/i.test(ua) ? 'android' : 'ios', false);
+
+  // Name store/APK link clicks for analytics; each link sets data-store-target.
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[data-store-target]');
+    if (!link) return;
+    const platform = /android/i.test(ua) ? 'android' : /iphone|ipad|ipod/i.test(ua) ? 'ios' : null;
+    const props = { target: link.dataset.storeTarget };
+    if (platform) props.platform = platform;
+    posthog.capture('store_click', props);
+  });
 </script>
