@@ -39,6 +39,8 @@ module.exports = {
         'cardbg' : '#FFFFFF',
         'ligthcream' : "#F4F4F4",
         'ligthgray' : "#ECFFF5",
+        'mint' : '#EBFFF4',
+        'pine' : '#386D51',
       },
       backgroundImage: {
         'hero-pattern': " linear-gradient(302deg, #6DD89D -7.5%, #57B48D 69.33%)",
